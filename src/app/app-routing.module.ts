@@ -6,9 +6,14 @@ import { PhotoFormComponent } from './photos/photo-form/photo-form.component';
 import { PhotoListComponent } from './photos/photo-list/photo-list.component';
 import { PhotoListResolver } from './photos/photo-list/photo-list.resolver';
 import { SigninComponent } from './home/signin/signin.component';
+import { AuthGuardService } from './core/auth/auth-guard.service';
 
 const routes: Routes = [
-  {path: '', component: SigninComponent},
+  {
+    path: '',
+     component: SigninComponent,
+     canActivate: [AuthGuardService]
+  },
   {
     path: 'user/:userName', component: PhotoListComponent,
     resolve: {
